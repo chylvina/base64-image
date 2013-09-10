@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('app', ['ui.router'])
+angular.module('app', ['ui.router', 'app.upload'])
 .config(function ($stateProvider, $urlRouterProvider) {
 
   /////////////////////////////
