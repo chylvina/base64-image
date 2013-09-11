@@ -1,4 +1,5 @@
 angular.module('app.upload', [
+  'app.config',
   'blueimp.fileupload'
 ])
 .config([
@@ -9,40 +10,34 @@ angular.module('app.upload', [
     /\/[^\/]*$/,
     '/cors/result.html?%s'
     );
-    if (isOnGitHub) {
-      // Demo settings:
-      angular.extend(fileUploadProvider.defaults, {
-        // Enable image resizing, except for Android and Opera,
-        // which actually support image resizing, but fail to
-        // send Blob objects via XHR requests:
-        disableImageResize: /Android(?!.*Chrome)|Opera/
-        .test(window.navigator.userAgent),
-        maxFileSize: 5000000,
-        acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
-      });
-    }
+    angular.extend(fileUploadProvider.defaults, {
+      'autoUpload': true,
+      limitMultiFileUploads: 1,
+      limitConcurrentUploads: 1,
+      disableImageResize: true,
+      maxFileSize: 5000000,
+      acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
+    });
   }
 ])
 
 .controller('DemoFileUploadController', [
-  '$scope', '$http', '$filter', '$window',
-  function ($scope, $http) {
+  '$scope', '$http', 'uploadurl',
+  function ($scope, $http, uploadurl) {
     $scope.options = {
-      url: url
+      url: uploadurl
     };
-    if (!isOnGitHub) {
-      $scope.loadingFiles = true;
-      $http.get(url)
-      .then(
-      function (response) {
-        $scope.loadingFiles = false;
-        $scope.queue = response.data.files || [];
-      },
-      function () {
-        $scope.loadingFiles = false;
-      }
-      );
+    $scope.loadingFiles = true;
+    $http.get(uploadurl)
+    .then(
+    function (response) {
+      $scope.loadingFiles = false;
+      $scope.queue = response.data.files || [];
+    },
+    function () {
+      $scope.loadingFiles = false;
     }
+    );
   }
 ])
 
