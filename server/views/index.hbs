@@ -1,0 +1,22 @@
+{{#extend "title"}}
+  <title>云适配 - 快速创建你的跨平台网站!</title>
+  <meta name="description" content="">
+{{/extend}}
+{{#extend "content"}}
+<div class="container index">
+  <div class='panel'>
+    <div class='inner'>
+      {{ current_user.name }}
+      {{ current_user.email }}
+      <p><a href="/user/signout">Sign out</a></p>
+      <p><a href="/user/setting">Setting</a></p>
+      <p><a href="/webmaster">Webmaster</a></p>
+    </div>
+  </div>
+</div>
+{{/extend}}
+{{#extend "script"}}
+  <script>       
+    window._AM_PAGE_ID = 'home';
+  </script>
+{{/extend}}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  {{{block "title"}}}
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width">
+  <meta name="generator" content="AllMobilize Cloud">
+  <link rel="alternate" media="only screen and (max-width: 640px)" href="http://m.yunshipei.com/index.html">
+  <link rel="alternate" media="handheld" href="http://m.yunshiepi.com/index.html">
+  {{#if __isProduction }}
+    <link rel="stylesheet" href="/css/user.min.css?v=1.5">
+  {{else}}
+    <link rel="stylesheet/less" type="text/css" href="/css/user.less">
+    <script src="/js/libs/less-1.3.3.min.js"></script>
+  {{/if}}
+  <script src="/js/libs/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a
+  different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+  experience this site.</p><![endif]-->
+<!-- Header -->
+  <header class="header">
+      <div class="navbar navbar-static-top">
+        <div class="navbar-inverse">
+          <div class="container">
+            <div class="pull-left">
+              <a href="/">
+                <img src="/img/logo.png" alt="云适配" class="logo">
+              </a>
+            </div>
+            <ul id ="navbar-menu" class="nav pull-left">
+              {{#if current_user }}
+              <li id="nav-home">
+                <a href="/webmaster">
+                  我的网站
+                </a>
+              </li>
+              <li id="nav-features">
+                <a href="/user/setting">
+                  账户设置
+                </a>
+              </li>
+              {{! <li id="nav-cases">
+                <a href="/support.html">
+                  技术支持
+                </a>
+              </li> }}              
+              {{else}}
+              <li id="nav-home">
+                <a href="/index.html">
+                  <i class="icon-home"></i>首页
+                </a>
+              </li>
+              <li id="nav-features">
+                <a href="/features.html">
+                  <i class="icon-cloud"></i>适配方案
+                </a>
+              </li>
+              <li id="nav-cases">
+                <a href="/cases.html">
+                  <i class="icon-search"></i>客户案例
+                </a>
+              </li>
+              <li id="nav-pricing">
+                <a href="/pricing.html">
+                  <i class="icon-food"></i>套餐选择
+                </a>
+              </li>   
+              {{/if}}         
+            </ul>            
+            <ul id ="navbar-menu" class="nav pull-right">
+              {{!<li id="nav-agent">
+                <a href="/agent.html">
+                  代理商通道
+                </a>
+              </li> }}
+              {{#if current_user }}
+              <li id="nav-user">
+                <a href="/webmaster">
+                  <i class="icon-user"></i>{{current_user.name}}
+                </a>
+              </li>
+              <li id="nav-signout">
+                <a href="/user/signout">
+                  <i class="icon-signout"></i>退出
+                </a>
+              </li>              
+              {{else}}
+              <li id="nav-signup">
+                <a href="/user/signin">
+                  登录
+                </a>
+              </li> 
+              <li id="nav-signup">
+                <a href="/user/signup">
+                  注册
+                </a>
+              </li>
+              {{/if}}
+            </ul>
+          </div>
+        </div>
+      </div>
+  </header>
+<!-- Content -->
+<div class="content">
+  {{{block "content"}}}
+</div>
+<!-- Footer -->
+{{#unless current_user }}
+  <footer class="footer">
+      <div class="container">
+        <div class="copyright pull-left">
+          <span>Copyright &copy; 2013 AllMobilize Inc. 美通云动(北京)科技有限公司 版权所有</span>
+          {{! <br/><span>京ICP备*******号</span> }}
+        </div> 
+        <div class="footer-about pull-right">
+          <ul class="thumbnails">
+            <li>
+              <div>
+                <ul>
+                  <li>产品</li>
+                  <li><a href="/features.html">适配方案</a></li>
+                  <li><a href="/cases.html">客户案例</a></li>
+                  <li><a href="/signup.html">在线注册</a></li>
+                  <li><a href="/support.html">技术支持</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <div>
+                <ul>
+                  <li>关于</li>
+                  <li><a href="/about.html">关于我们</a></li>
+                  <li><a href="/jobs.html">招贤纳士</a></li>
+                  <li><a href="/privacy.html">服务条款</a></li>
+                </ul>
+              </div> 
+            </li>
+          </ul>
+        </div>               
+      </div>
+  </footer>
+{{/unless}}
+<!-- Load scripts-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script>
+  var jqs = '<' + 'script src="/js/libs/jquery-1.9.0.min.js"></' + 'script>';
+  window.jQuery || document.write(jqs);
+</script>
+<script src="/js/libs/bootstrap/bootstrap.min.js"></script>
+{{! <script src="/user/web/assets/js/plugins.js"></script> }}
+{{{block "script"}}}
+{{! <script src="/user/web/assets/js/script.js"></script> }}
+<script>
+  var _gaq = [
+    ['_setAccount', 'UA-34196034-1'],
+    ['_setDomainName', 'allmobilize.com'],
+    ['_trackPageview']
+  ];
+  (function (d, t) {
+    var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+    g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s)
+  }(document, 'script'));
+</script>
+</body>
+</html>

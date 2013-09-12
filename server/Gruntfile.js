@@ -3,7 +3,7 @@
 var request = require('request');
 
 module.exports = function (grunt) {
-  var reloadPort = 35729, files;
+  var reloadPort = 35719, files;
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -14,7 +14,7 @@ module.exports = function (grunt) {
     },
     watch: {
       options: {
-        nospawn: true,
+        spawn: true,
         livereload: reloadPort
       },
       server: {
@@ -28,19 +28,13 @@ module.exports = function (grunt) {
         files: ['public/js/*.js'],
         options: {
           livereload: reloadPort
-        },
+        }
       },
       css: {
         files: ['public/css/*.css'],
         options: {
           livereload: reloadPort
-        },
-      },
-      jade: {
-        files: ['views/*.jade'],
-        options: {
-          livereload: reloadPort
-        },
+        }
       }
     }
   });

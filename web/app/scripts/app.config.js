@@ -1,2 +1,2 @@
 angular.module('app.config', [])
-.value('uploadurl', 'http://localhost:8888');
+.constant('uploadurl', 'http://localhost:80/upload');
