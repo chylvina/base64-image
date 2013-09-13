@@ -4,16 +4,43 @@ exports.index = function (req, res) {
   res.redirect(301, 'index.html');
 };
 
+exports.uploadOption = function(req, res) {
+  console.log('options');
+  var options = {
+    accessControl: {
+      allowOrigin: '*',
+      allowMethods: 'OPTIONS, HEAD, GET, POST, PUT, DELETE',
+      allowHeaders: 'Content-Type, Content-Range, Content-Disposition'
+    }
+  };
+  res.setHeader(
+    'Access-Control-Allow-Origin',
+    options.accessControl.allowOrigin
+  );
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    options.accessControl.allowMethods
+  );
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    options.accessControl.allowHeaders
+  );
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.setHeader('Content-Disposition', 'inline; filename="files.json"');
+  res.end();
+}
+
 exports.upload = function (req, res) {
-  console.log('upload1');
+  console.log(123);
+  console.log(req);
   var path = require('path'),
     fs = require('fs'),
     mime = require("mime"),
     _existsSync = fs.existsSync,
     formidable = require('formidable'),
     options = {
-      tmpDir: __dirname + '/../tmp',
-      uploadDir: __dirname + '/public/files',
+      tmpDir: './tmp',
       maxPostSize: 11000000000, // 11 GB
       minFileSize: 1,
       maxFileSize: 10000000000, // 10 GB
@@ -82,10 +109,12 @@ exports.upload = function (req, res) {
     tmpFiles = [],
     files = [],
     map = {};
+  console.log(options.tmpDir);
   form.uploadDir = options.tmpDir;
-  form.encoding = 'utf-8';
+  //form.encoding = 'utf-8';
   form
     .on('fileBegin', function (name, file) {
+      console.log('fileBegin');
       tmpFiles.push(file.path);
       var fileInfo = new FileInfo(file);
       fileInfo.safeName();
@@ -96,6 +125,7 @@ exports.upload = function (req, res) {
       console.log('field', name, value);
     })
     .on('file', function (name, file) {
+      console.log('file');
       var fileInfo = map[path.basename(file.path)];
       fileInfo.size = file.size;
       if (!fileInfo.validate()) {
@@ -104,20 +134,25 @@ exports.upload = function (req, res) {
       console.log(base64Image(file.path));
     })
     .on('aborted', function () {
+      console.log('aborted');
       tmpFiles.forEach(function (file) {
         return onError('', file);
       });
     })
     .on('error', function (e) {
-      return onError('', file);
+      console.log('error', e);
+      tmpFiles.forEach(function (file) {
+        return onError('', file);
+      });
     })
     .on('progress', function (bytesReceived, bytesExpected) {
+      console.log('progress', bytesReceived, bytesExpected);
       if (bytesReceived > options.maxPostSize) {
         req.connection.destroy();
       }
     })
     .on('end', function () {
-
-    })
-    .parse(req);
+      console.log('end');
+    });
+    form.parse(req);
 };

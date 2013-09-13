@@ -14,7 +14,7 @@ module.exports = function (grunt) {
     },
     watch: {
       options: {
-        spawn: true,
+        nospawn: true,
         livereload: reloadPort
       },
       server: {
