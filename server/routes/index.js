@@ -32,8 +32,6 @@ exports.uploadOption = function(req, res) {
 }
 
 exports.upload = function (req, res) {
-  console.log(123);
-  console.log(req);
   var path = require('path'),
     fs = require('fs'),
     mime = require("mime"),
