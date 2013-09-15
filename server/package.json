@@ -18,6 +18,8 @@
     "grunt": "~0.4.1",
     "grunt-develop": "~0.1.1",
     "grunt-contrib-watch": "~0.4.4",
-    "request": "~2.22.0"
+    "request": "~2.22.0",
+    "connect": "~2.9.0",
+    "imagemagick": "~0.1.3"
   }
 }
