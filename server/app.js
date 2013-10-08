@@ -29,7 +29,6 @@ else {
 }
 
 app.get('/', routes.index);
-app.options('/upload', routes.uploadOption);
 app.post('/upload', routes.upload);
 
 app.listen(app.get('port'), function() {

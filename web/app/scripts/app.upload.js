@@ -7,7 +7,6 @@ angular.module('app.upload', [
     function ($httpProvider, fileUploadProvider) {
       delete $httpProvider.defaults.headers.common['X-Requested-With'];
       angular.extend(fileUploadProvider.defaults, {
-        'forceIframeTransport': true,
         'autoUpload': true,
         limitMultiFileUploads: 1,
         limitConcurrentUploads: 1,

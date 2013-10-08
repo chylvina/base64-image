@@ -26,12 +26,12 @@ angular.module('app', ['ui.router', 'app.upload'])
   // Use $stateProvider to configure your states.
   $stateProvider
 
-  .state("step1", {
+  .state("home", {
 
     // Use a url of "/" to set a states as the "index".
     url: "/",
 
-    templateUrl: 'views/step1.html',
+    templateUrl: 'views/main.html',
 
     controller: function ($scope) {
       $scope.awesomeThings = [

@@ -11,10 +11,11 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="bower_components/jquery-file-upload/css/jquery.fileupload-ui.css">
-        <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="bower_components/jquery-file-upload/css/jquery.fileupload-ui.css">
+    <!-- endbuild -->
 </head>
   <body ng-app="app">
     <!--[if lt IE 7]>
@@ -27,7 +28,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" style="margin-top: 200px;" ui-view></div>
+    <div ui-view></div>
 
     <!-- Google Analytics -->
     <script>
@@ -44,7 +45,7 @@
     <script src="bower_components/angular/angular.js"></script>
 
     <!-- build:js scripts/plugins.js -->
-    <script src="bower_components/bootstrap/js/affix.js"></script>
+    <!--<script src="bower_components/bootstrap/js/affix.js"></script>
     <script src="bower_components/bootstrap/js/alert.js"></script>
     <script src="bower_components/bootstrap/js/button.js"></script>
     <script src="bower_components/bootstrap/js/carousel.js"></script>
@@ -55,7 +56,7 @@
     <script src="bower_components/bootstrap/js/popover.js"></script>
     <script src="bower_components/bootstrap/js/scrollspy.js"></script>
     <script src="bower_components/bootstrap/js/tab.js"></script>
-    <script src="bower_components/bootstrap/js/transition.js"></script>
+    <script src="bower_components/bootstrap/js/transition.js"></script>-->
 
     <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
     <script src="bower_components/jquery-ui/ui/jquery.ui.widget.js"></script>
@@ -76,9 +77,9 @@
     <!-- endbuild -->
 
     <!-- build:js scripts/modules.js -->
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <!--<script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>-->
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbuild -->
 
