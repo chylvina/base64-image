@@ -43,7 +43,7 @@ exports.upload = function (req, res) {
     },
     onSuccess = function (data) {
       logger.data('123');
-      res.setHeader(
+      /*res.setHeader(
         'Access-Control-Allow-Origin',
         options.accessControl.allowOrigin
       );
@@ -54,7 +54,7 @@ exports.upload = function (req, res) {
       res.setHeader(
         'Access-Control-Allow-Headers',
         options.accessControl.allowHeaders
-      );
+      );*/
       res.setHeader('Pragma', 'no-cache');
       res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
       res.setHeader('Content-Disposition', 'inline; filename="files.json"');
@@ -96,7 +96,7 @@ exports.upload = function (req, res) {
     map = {};
 
   form.uploadDir = options.tmpDir;
-  //form.encoding = 'utf-8';
+  form.encoding = 'utf-8';
   form
     .on('fileBegin', function (name, file) {
       tmpFiles.push(file.path);
@@ -139,7 +139,12 @@ exports.upload = function (req, res) {
     })
     .on('end', function () {
       tmpFiles.forEach(function (file) {
-        fs.unlink(file);
+        try {
+          fs.unlink(file);
+        }
+        catch(e) {
+
+        }
       });
     });
     form.parse(req);
