@@ -1,4 +1,4 @@
-<div>
+<div data-ng-controller="AppFileUploadController">
   <div class="app-header">
     <div class="app-grid">
       <div>
@@ -8,7 +8,7 @@
   </div>
   <div class="app-container light">
     <div class="app-grid">
-      <form id="fileupload" method="POST" enctype="multipart/form-data" data-ng-controller="AppFileUploadController"
+      <form method="POST" enctype="multipart/form-data"
             data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
         <div class="row fileupload-buttonbar">
@@ -19,7 +19,7 @@
                     <span>Add files...</span>
                     <input type="file" name="files[]" multiple ng-disabled="disabled">
                 </span>
-            <button type="button" class="btn btn-primary start disabled" data-ng-click="submit()">
+            <button type="button" class="btn btn-primary start" data-ng-class="{'disabled': !readytoUpload}" data-ng-click="submit()">
               <i class="glyphicon glyphicon-upload"></i>
               <span>Start upload</span>
             </button>
@@ -51,20 +51,24 @@
       </form>
     </div>
   </div>
-  <div class="app-container dark">
+  <div class="app-container" data-ng-repeat="result in resultArr" data-ng-class="{'dark': $even, 'light': $odd }">
     <div class="app-grid">
       <div class="app-imagebox">
-        <img src="images/logo.png">
+        <img data-ng-src="{{'data:image/png;base64,' + result.data}}">
       </div>
       <div style="display: inline-block; width: 500px;">
         <form class="form-horizontal" role="form">
           <div class="form-group">
             <p>Base64 String</p>
-            <textarea class="form-control" rows="3"></textarea>
+            <input type="text" class="form-control" value="{{result.data}}" select-on-click>
           </div>
           <div class="form-group">
             <p>CSS Background Image</p>
-            <textarea class="form-control" rows="3"></textarea>
+            <input class="form-control" value="{{'background-image: url(&quot;' + result.data + '&quot;);'}}" select-on-click>
+          </div>
+          <div class="form-group">
+            <p>Image Src</p>
+            <input class="form-control" value='{{"&lt;img src=\"data:image/png;base64," + result.data + "\"&gt;"}}' select-on-click>
           </div>
         </form>
       </div>

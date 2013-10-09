@@ -35,13 +35,13 @@ body {
 
 .app-imagebox {
   display: inline-block;
-  width: 300px;
+  width: 235px;
   margin-right: 20px;
   text-align: center;
   vertical-align: top;
 }
 
 .app-grid img {
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 235px;
+  max-height: 235px;
 }

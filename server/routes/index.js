@@ -58,7 +58,8 @@ exports.upload = function (req, res) {
       res.setHeader('Pragma', 'no-cache');
       res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
       res.setHeader('Content-Disposition', 'inline; filename="files.json"');
-      res.json(200, {
+      res.setHeader('Content-Type', 'text/plain; charset=utf-8');   // IE8 doesn't support application/json
+      res.send(200, {
         success: 1,
         data: data
       });

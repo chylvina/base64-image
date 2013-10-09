@@ -22,4 +22,26 @@ angular.module('app.upload', [
       url: uploadurl
     };
     $scope.loadingFiles = false;
+    $scope.readytoUpload = false;
+    $scope.canCancel = false;
+
+    $scope.resultArr = [];
+
+    $scope.$on('fileuploadadd', function(event, data) {
+      $scope.readytoUpload = true;
+    });
+    $scope.$on('fileuploadstart', function(event, data) {
+      $scope.readytoUpload = false;
+      $scope.canCancel = true;
+    });
+    $scope.$on('fileuploaddone', function(event, data) {
+      $scope.canCancel = false;
+      if(data.result) {
+        $scope.resultArr.unshift(data.result);
+      }
+      //$scope.$apply();
+    });
+    $scope.$on('fileuploadfail', function(event, data) {
+      $scope.canCancel = false;
+    });
   });
