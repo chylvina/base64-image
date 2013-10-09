@@ -39,9 +39,11 @@ angular.module('app.upload', [
       if(data.result) {
         $scope.resultArr.unshift(data.result);
       }
-      //$scope.$apply();
+      $scope.queue = [];
     });
     $scope.$on('fileuploadfail', function(event, data) {
       $scope.canCancel = false;
+
+      $scope.queue = [];
     });
   });
