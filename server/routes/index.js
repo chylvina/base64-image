@@ -41,7 +41,7 @@ exports.upload = function (req, res) {
         msg: msg
       });
     },
-    onSuccess = function (data) {
+    onSuccess = function (data, fileType) {
       logger.data('123');
       /*res.setHeader(
         'Access-Control-Allow-Origin',
@@ -61,7 +61,8 @@ exports.upload = function (req, res) {
       res.setHeader('Content-Type', 'text/plain; charset=utf-8');   // IE8 doesn't support application/json
       res.send(200, {
         success: 1,
-        data: data
+        data: data,
+        type: fileType
       });
     };
 
@@ -120,7 +121,7 @@ exports.upload = function (req, res) {
       try {
         var data = base64Image(file.path);
         if(data && data != '') {
-          return onSuccess(data);
+          return onSuccess(data, fileInfo.type);
         }
       }
       catch(error) {

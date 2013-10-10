@@ -64,11 +64,11 @@
           </div>
           <div class="form-group">
             <p>CSS Background Image</p>
-            <input class="form-control" value="{{'background-image: url(&quot;' + result.data + '&quot;);'}}" select-on-click>
+            <input class="form-control" value='{{"background-image: url(&apos;data:" + result.type + ";base64," + result.data + "&apos;);"}}' select-on-click>
           </div>
           <div class="form-group">
             <p>Image Src</p>
-            <input class="form-control" value='{{"&lt;img src=\"data:image/png;base64," + result.data + "\"&gt;"}}' select-on-click>
+            <input class="form-control" value='{{"&lt;img src=&apos;data:" + result.type + ";base64," + result.data + "&apos;&gt;"}}' select-on-click>
           </div>
         </form>
       </div>
