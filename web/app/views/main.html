@@ -3,6 +3,9 @@
     <div class="app-grid">
       <div>
         <img src="images/logo.png">
+        <div style="float: right; line-height: 50px;">
+          <div class="g-plusone" data-annotation="inline" data-width="300" data-align="right"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -16,16 +19,16 @@
             <!-- The fileinput-button span is used to style the file input field as button -->
                 <span class="btn btn-success fileinput-button" ng-class="{disabled: disabled}">
                     <i class="glyphicon glyphicon-plus"></i>
-                    <span>Add files...</span>
+                    <span>{{ 'ADD_FILE' | translate }}</span>
                     <input type="file" name="files[]" ng-disabled="disabled">
                 </span>
             <button type="button" class="btn btn-primary start" data-ng-class="{'disabled': !readytoUpload}" data-ng-click="submit()">
               <i class="glyphicon glyphicon-upload"></i>
-              <span>Start upload</span>
+              <span>{{ 'ENCODE' | translate }}</span>
             </button>
             <button type="button" class="btn btn-warning cancel disabled" data-ng-click="cancel()">
               <i class="glyphicon glyphicon-ban-circle"></i>
-              <span>Cancel upload</span>
+              <span>{{ 'CANCEL' | translate }}</span>
             </button>
             <!-- The loading indicator is shown during file processing -->
             <div class="fileupload-loading"></div>
@@ -41,10 +44,10 @@
           </div>
           <div class="col-lg-10">
             <p>
-              You can upload images of different formats (jpg, png, gif) with a maximum filesize of 1,5 MB.Animated GIF is possible, too.
+              {{ 'RULE1' | translate }}
             </p>
             <p>
-              Animated GIF is possible, too.
+              {{ 'RULE2' | translate }}
             </p>
           </div>
         </div>
@@ -59,15 +62,15 @@
       <div style="display: inline-block; width: 500px;">
         <form class="form-horizontal" role="form">
           <div class="form-group">
-            <p>Base64 String</p>
+            <p>{{ 'LABEL1' | translate }}</p>
             <input type="text" class="form-control" value="{{result.data}}" select-on-click>
           </div>
           <div class="form-group">
-            <p>CSS Background Image</p>
+            <p>{{ 'LABEL2' | translate }}</p>
             <input class="form-control" value='{{"background-image: url(&apos;data:" + result.type + ";base64," + result.data + "&apos;);"}}' select-on-click>
           </div>
           <div class="form-group">
-            <p>Image Src</p>
+            <p>{{ 'LABEL3' | translate }}</p>
             <input class="form-control" value='{{"&lt;img src=&apos;data:" + result.type + ";base64," + result.data + "&apos;&gt;"}}' select-on-click>
           </div>
         </form>

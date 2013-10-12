@@ -19,7 +19,7 @@ angular.module('app.upload', [
     }
   ])
 
-  .controller('AppFileUploadController', function ($scope, $http, uploadurl) {
+  .controller('AppFileUploadController', function ($scope, $http, $translate, uploadurl) {
     $scope.options = {
       url: uploadurl
     };
@@ -29,7 +29,27 @@ angular.module('app.upload', [
 
     $scope.resultArr = [];
 
+    var onError = function(msg) {
+      alert(msg);
+      $scope.queue = [];
+    };
+
     $scope.$on('fileuploadadd', function(event, data) {
+      if(!data || !data.files || !data.files[0]) {
+        onError($translate('ALERT1'));
+        return;
+      }
+
+      if(!/\.(gif|jpe?g|png)$/i.test(data.files[0].name)) {
+        onError($translate('ALERT2'));
+        return;
+      }
+
+      if(data.files[0].size > 2 * 1024 * 1024) {
+        onError($translate('ALERT3'));
+        return;
+      }
+
       $scope.readytoUpload = true;
     });
     $scope.$on('fileuploadstart', function(event, data) {
