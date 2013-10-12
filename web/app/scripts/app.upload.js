@@ -1,3 +1,5 @@
+"use strict";
+
 angular.module('app.upload', [
     'app.config',
     'blueimp.fileupload'

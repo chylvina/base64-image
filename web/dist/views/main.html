@@ -1,9 +1,76 @@
-<div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
-  <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-  </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
+<div data-ng-controller="AppFileUploadController">
+  <div class="app-header">
+    <div class="app-grid">
+      <div>
+        <img src="images/logo.png">
+      </div>
+    </div>
+  </div>
+  <div class="app-container light">
+    <div class="app-grid">
+      <form method="POST" enctype="multipart/form-data" data-file-upload="options" data-ng-class="{'fileupload-processing': processing() || loadingFiles}">
+        <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+        <div class="row fileupload-buttonbar">
+          <div class="col-lg-5">
+            <!-- The fileinput-button span is used to style the file input field as button -->
+                <span class="btn btn-success fileinput-button" ng-class="{disabled: disabled}">
+                    <i class="glyphicon glyphicon-plus"></i>
+                    <span>Add files...</span>
+                    <input type="file" name="files[]" ng-disabled="disabled">
+                </span>
+            <button type="button" class="btn btn-primary start" data-ng-class="{'disabled': !readytoUpload}" data-ng-click="submit()">
+              <i class="glyphicon glyphicon-upload"></i>
+              <span>Start upload</span>
+            </button>
+            <button type="button" class="btn btn-warning cancel disabled" data-ng-click="cancel()">
+              <i class="glyphicon glyphicon-ban-circle"></i>
+              <span>Cancel upload</span>
+            </button>
+            <!-- The loading indicator is shown during file processing -->
+            <div class="fileupload-loading"></div>
+          </div>
+          <!-- The global progress information -->
+          <div class="col-lg-5 fade" data-ng-class="{in: active()}">
+            <!-- The global progress bar -->
+            <div class="progress progress-striped active" data-file-upload-progress="progress()">
+              <div class="progress-bar progress-bar-success" data-ng-style="{width: num + '%'}"></div>
+            </div>
+            <!-- The extended global progress information -->
+            <div class="progress-extended">&nbsp;</div>
+          </div>
+          <div class="col-lg-10">
+            <p>
+              You can upload images of different formats (jpg, png, gif) with a maximum filesize of 1,5 MB.Animated GIF is possible, too.
+            </p>
+            <p>
+              Animated GIF is possible, too.
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="app-container" data-ng-repeat="result in resultArr" data-ng-class="{'dark': $even, 'light': $odd }">
+    <div class="app-grid">
+      <div class="app-imagebox">
+        <img data-ng-src="{{'data:image/png;base64,' + result.data}}">
+      </div>
+      <div style="display: inline-block; width: 500px">
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <p>Base64 String</p>
+            <input type="text" class="form-control" value="{{result.data}}" select-on-click="">
+          </div>
+          <div class="form-group">
+            <p>CSS Background Image</p>
+            <input class="form-control" value="{{\"background-image: url(&apos;data:\" + result.type + \";base64,\" + result.data + \"&apos;);\"}}" select-on-click="">
+          </div>
+          <div class="form-group">
+            <p>Image Src</p>
+            <input class="form-control" value="{{\"&lt;img src=&apos;data:\" + result.type + \";base64,\" + result.data + \"&apos;&gt;\"}}" select-on-click="">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

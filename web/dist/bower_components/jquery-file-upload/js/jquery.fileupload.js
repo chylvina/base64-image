@@ -47,7 +47,7 @@
 
     // Detect support for Blob slicing (required for chunked uploads):
     $.support.blobSlice = window.Blob && (Blob.prototype.slice ||
-        Blob.prototype.webkitSlice || Blob.prototype.mozSlice);http://localhost:9000/#/
+        Blob.prototype.webkitSlice || Blob.prototype.mozSlice);
 
     // The fileupload widget listens for change events on file input fields defined
     // via fileInput setting and paste or drop events of the given dropZone.

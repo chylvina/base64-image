@@ -85,7 +85,7 @@ angular.module('app', ['ui.router', 'app.upload', 'app.directive', 'ngAnimate'])
         $state.go('contacts.detail', { contactId: randId });
       };
     }
-  })
+  });
 }).
 run(function ($rootScope, $state, $stateParams) {
   // It's very handy to add references to $state and $stateParams to the $rootScope

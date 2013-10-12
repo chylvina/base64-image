@@ -82,6 +82,7 @@
                                 };
                             });
                             file.$cancel = function () {
+
                                 scope.clear(data.files);
                                 return data.abort();
                             };

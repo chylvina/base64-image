@@ -1,3 +1,5 @@
+"use strict";
+
 angular.module('app.directive', [])
   .directive('selectOnClick', function () {
     // Linker function
