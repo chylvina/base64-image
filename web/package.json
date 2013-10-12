@@ -1,8 +1,7 @@
 {
-  "name": "aym",
-  "version": "0.0.0",
-  "dependencies": {},
-  "devDependencies": {
+  "name": "web",
+  "version": "0.0.1",
+  "dependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-copy": "~0.4.1",
     "grunt-contrib-concat": "~0.3.0",
@@ -41,6 +40,9 @@
     "karma-phantomjs-launcher": "~0.1.0",
     "karma": "~0.10.2",
     "karma-ng-html2js-preprocessor": "~0.1.0"
+  },
+  "devDependencies": {
+
   },
   "engines": {
     "node": ">=0.8.0"
