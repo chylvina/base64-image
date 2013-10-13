@@ -19,15 +19,15 @@ app.use(express.favicon());
 app.use(app.router);
 
 if ('development' == app.get('env')) {
-  app.use(express.static(path.join(__dirname, '../web/dist')));
-  //app.use(express.static(path.join(__dirname, '../web/app')));
-  //app.use(express.static(path.join(__dirname, '../web/.tmp')));
-  app.use(express.errorHandler());
-  app.use(express.logger('dev'));
+  app.use(express.static(path.join(__dirname, '../web/app')));
+  app.use(express.static(path.join(__dirname, '../web/.tmp')));
 }
 else {
-  //app.use(express.static(path.join(__dirname, '../web/dist')));
+  app.use(express.static(path.join(__dirname, '../web/dist')));
 }
+
+app.use(express.errorHandler());
+app.use(express.logger('dev'));
 
 app.get('/', routes.index);
 app.post('/upload', routes.upload);
