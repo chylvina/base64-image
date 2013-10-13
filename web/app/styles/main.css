@@ -36,9 +36,9 @@ body {
 .app-imagebox {
   display: inline-block;
   width: 235px;
-  margin-right: 20px;
+  height: 340px;
+  margin-right: 40px;
   text-align: center;
-  vertical-align: top;
 }
 
 .app-grid img {

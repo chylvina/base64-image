@@ -56,22 +56,22 @@
   </div>
   <div class="app-container" data-ng-repeat="result in resultArr" data-ng-class="{'dark': $even, 'light': $odd }">
     <div class="app-grid">
-      <div class="app-imagebox">
-        <img data-ng-src="{{'data:image/png;base64,' + result.data}}">
+      <div class="app-imagebox" data-ng-style="{background:'url(data:' + result.type + ';base64,' + result.data + ') no-repeat center center'}">
+        <!--<img data-ng-src="{{'data:image/png;base64,' + result.data}}">-->
       </div>
       <div style="display: inline-block; width: 500px;">
         <form class="form-horizontal" role="form">
           <div class="form-group">
             <p>{{ 'LABEL1' | translate }}</p>
-            <input type="text" class="form-control" value="{{result.data}}" select-on-click>
+            <textarea class="form-control" rows="3" select-on-click>{{result.data}}</textarea>
           </div>
           <div class="form-group">
             <p>{{ 'LABEL2' | translate }}</p>
-            <input class="form-control" value='{{"background-image: url(&apos;data:" + result.type + ";base64," + result.data + "&apos;);"}}' select-on-click>
+            <textarea class="form-control" rows="3" select-on-click>{{"background-image: url(&apos;data:" + result.type + ";base64," + result.data + "&apos;);"}}</textarea>
           </div>
           <div class="form-group">
             <p>{{ 'LABEL3' | translate }}</p>
-            <input class="form-control" value='{{"&lt;img src=&apos;data:" + result.type + ";base64," + result.data + "&apos;&gt;"}}' select-on-click>
+            <textarea class="form-control" rows="3" select-on-click>{{"&lt;img src=&apos;data:" + result.type + ";base64," + result.data + "&apos;&gt;"}}</textarea>
           </div>
         </form>
       </div>

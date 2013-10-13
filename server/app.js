@@ -19,13 +19,14 @@ app.use(express.favicon());
 app.use(app.router);
 
 if ('development' == app.get('env')) {
-  app.use(express.static(path.join(__dirname, '../web/app')));
-  app.use(express.static(path.join(__dirname, '../web/.tmp')));
+  app.use(express.static(path.join(__dirname, '../web/dist')));
+  //app.use(express.static(path.join(__dirname, '../web/app')));
+  //app.use(express.static(path.join(__dirname, '../web/.tmp')));
   app.use(express.errorHandler());
   app.use(express.logger('dev'));
 }
 else {
-  app.use(express.static(path.join(__dirname, '../web/dist')));
+  //app.use(express.static(path.join(__dirname, '../web/dist')));
 }
 
 app.get('/', routes.index);
