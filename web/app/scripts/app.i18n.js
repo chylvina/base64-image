@@ -1,3 +1,5 @@
+"use strict";
+
 angular.module('app.i18n', ['pascalprecht.translate'])
   .config(function ($translateProvider) {
     $translateProvider.translations('en', {
