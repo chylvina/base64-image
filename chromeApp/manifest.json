@@ -1,0 +1,17 @@
+{
+   "app": {
+      "launch": {
+         "web_url": "http://base64-image.com"
+      }
+   },
+   "description": "Encode your image to base64 string.",
+   "icons": {
+      "128": "icon128.png",
+      "64": "icon64.png",
+      "32": "icon32.png",
+      "16": "icon16.png"
+   },
+   "name": "Base64 Image Encoder",
+   "version": "1.0",
+   "manifest_version": 2
+}
