@@ -29,10 +29,13 @@ angular.module('app.upload', [
 
     $scope.resultArr = [];
 
+    var clearQueue = function() {
+      $scope.$broadcast('clearQueue');
+    };
+
     var onError = function(msg) {
       window.alert(msg);
-      $scope.queue = [];
-      $scope.clearAll();
+      clearQueue();
     };
 
     $scope.$on('fileuploadadd', function(event, data) {
@@ -62,13 +65,10 @@ angular.module('app.upload', [
       if(data.result) {
         $scope.resultArr.unshift(data.result);
       }
-      $scope.queue = [];
-      $scope.clearAll();
+      clearQueue();
     });
     $scope.$on('fileuploadfail', function(event, data) {
       $scope.canCancel = false;
-
-      $scope.queue = [];
-      $scope.clearAll();
+      clearQueue();
     });
   });
