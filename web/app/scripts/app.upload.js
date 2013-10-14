@@ -29,28 +29,22 @@ angular.module('app.upload', [
 
     $scope.resultArr = [];
 
-    var clearQueue = function() {
-      $scope.$broadcast('clearQueue');
-    };
-
-    var onError = function(msg) {
-      window.alert(msg);
-      clearQueue();
-    };
-
     $scope.$on('fileuploadadd', function(event, data) {
       if(!data || !data.files || !data.files[0]) {
-        onError($translate('ALERT1'));
+        window.alert($translate('ALERT1'));
+        event.targetScope.queue = [];
         return;
       }
 
       if(!/\.(gif|jpe?g|png)$/i.test(data.files[0].name)) {
-        onError($translate('ALERT2'));
+        window.alert($translate('ALERT2'));
+        event.targetScope.queue = [];
         return;
       }
 
       if(data.files[0].size > 2 * 1024 * 1024) {
-        onError($translate('ALERT3'));
+        window.alert($translate('ALERT3'));
+        event.targetScope.queue = [];
         return;
       }
 
@@ -65,10 +59,10 @@ angular.module('app.upload', [
       if(data.result) {
         $scope.resultArr.unshift(data.result);
       }
-      clearQueue();
+      event.targetScope.queue = [];
     });
     $scope.$on('fileuploadfail', function(event, data) {
       $scope.canCancel = false;
-      clearQueue();
+      event.targetScope.queue = [];
     });
   });
