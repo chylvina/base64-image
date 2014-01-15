@@ -70,3 +70,7 @@ body {
   position: relative;
   top: 100px;
 }
+
+.form-horizontal .form-group {
+  margin: 0 !important;
+}
